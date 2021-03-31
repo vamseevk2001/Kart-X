@@ -4,29 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_backgroung"
+    android:background="@drawable/loginbackgroung"
     tools:context=".MainActivity">
 
 
-    <androidx.cardview.widget.CardView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="208dp"
+        android:src="@drawable/kart_x"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:cardBackgroundColor="@color/white"
-        android:layout_margin="20dp"
-        app:cardCornerRadius="30dp">
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/signin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Signin using Google"
             android:backgroundTint="@color/white"
-            android:textColor="@color/black"
             android:onClick="signin"
-            />
+            android:text="Sign in with Google"
+            android:textColor="@color/black" />
 
     </androidx.cardview.widget.CardView>
 

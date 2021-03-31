@@ -15,11 +15,11 @@ import java.util.List;
 public class Dashboard extends AppCompatActivity {
 
     //item images
-    String img_url1 = "https://images-na.ssl-images-amazon.com/images/I/61WjZrbnqML._SX466_.jpg"; //boat
-    String img_url2 = "https://images-na.ssl-images-amazon.com/images/I/818c8Lnb8GL._SL1500_.jpg"; //skull candy
-    String img_url3 = "https://images-na.ssl-images-amazon.com/images/I/81v7oPP75kL._SL1500_.jpg"; //sony
-    String img_url4 = "https://images-na.ssl-images-amazon.com/images/I/71b0AbTo9RL._SL1500_.jpg"; //boat
-    String img_url5 = "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/airpods-max-select-skyblue-202011?wid=470&hei=556&fmt=png-alpha&.v=1604022365000";//apple
+    String img_url1 = "https://images-eu.ssl-images-amazon.com/images/G/31/img21/Laptops/Acer/Nitro-5/1242X450-re.jpg"; //Acer Nitro 5
+    String img_url2 = "https://images-eu.ssl-images-amazon.com/images/G/31/img21/Laptops/February/D20687461_IN_PC_Laptops-Laptop-days--Apple-February_vday_770._CB660536128_SY500_.jpg"; //fire bolt wrist band
+    String img_url3 = "https://images-eu.ssl-images-amazon.com/images/G/31/img21/Laptops/Microsoft/Surface-Days/Surface-Pro-X-1242x450._CB656766391_SY500_.jpg"; //sony
+    String img_url4 = "https://images-eu.ssl-images-amazon.com/images/G/31/img20/Audio/Sony/NYC/Boat_Hero_1242x450.jpg"; //boat
+    String img_url5 = "https://images-eu.ssl-images-amazon.com/images/G/31/img21/Monitors/Co-op/LG/ED_monitors_1242x450.jpg";//lg monitor
 
 
     @Override
@@ -32,14 +32,13 @@ public class Dashboard extends AppCompatActivity {
         ImageSlider imageSlider = (ImageSlider) findViewById(R.id.image_slider);
 
         List<SlideModel> imageList = new ArrayList<SlideModel>();
-        imageList.add(new SlideModel(img_url1, "Boat"));
-        imageList.add(new SlideModel(img_url2, "Skull Candy"));
-        imageList.add(new SlideModel(img_url3, "Sony"));
-        imageList.add(new SlideModel(img_url4, "Boat"));
-        imageList.add(new SlideModel(img_url5, "Apple ear pods pro"));
+        imageList.add(new SlideModel(img_url1));
+        imageList.add(new SlideModel(img_url2));
+        imageList.add(new SlideModel(img_url3));
+        imageList.add(new SlideModel(img_url4));
+        imageList.add(new SlideModel(img_url5));
 
-
-        imageSlider.setImageList(imageList, true);
+        imageSlider.setImageList(imageList, false);
 
     }
 
