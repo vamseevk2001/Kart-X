@@ -20,8 +20,7 @@ public class Dashboard extends AppCompatActivity {
     String img_url3 = "https://images-na.ssl-images-amazon.com/images/I/81v7oPP75kL._SL1500_.jpg"; //sony
     String img_url4 = "https://images-na.ssl-images-amazon.com/images/I/71b0AbTo9RL._SL1500_.jpg"; //boat
     String img_url5 = "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/airpods-max-select-skyblue-202011?wid=470&hei=556&fmt=png-alpha&.v=1604022365000";//apple
-    String img_url6 = "https://images-na.ssl-images-amazon.com/images/I/71b0AbTo9RL._SL1500_.jpg";
-    String img_url7 = "https://images-na.ssl-images-amazon.com/images/I/71b0AbTo9RL._SL1500_.jpg";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +37,7 @@ public class Dashboard extends AppCompatActivity {
         imageList.add(new SlideModel(img_url3, "Sony"));
         imageList.add(new SlideModel(img_url4, "Boat"));
         imageList.add(new SlideModel(img_url5, "Apple ear pods pro"));
-        imageList.add(new SlideModel(img_url6, "vamsee"));
-        imageList.add(new SlideModel(img_url7, "sharvesh"));
+
 
         imageSlider.setImageList(imageList, true);
 
