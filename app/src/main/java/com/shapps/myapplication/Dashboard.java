@@ -35,6 +35,7 @@ public class Dashboard extends AppCompatActivity {
         imageList.add(new SlideModel(img_url3, "Sony"));
         imageList.add(new SlideModel(img_url4, "Boat"));
         imageList.add(new SlideModel(img_url5, "Apple ear pods pro"));
+        imageList.add(new SlideModel(img_url6, "vamsee"));
 
         imageSlider.setImageList(imageList, true);
 
