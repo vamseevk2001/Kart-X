@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ public class Profile extends AppCompatActivity {
            if(signInAccount !=null){
                name.setText(signInAccount.getDisplayName());
                mail.setText(signInAccount.getEmail());
+               Log.d("display Picture",signInAccount.getPhotoUrl().toString());
            }
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
