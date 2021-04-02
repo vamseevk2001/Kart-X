@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "834201967579",
+    "project_id": "kart-x",
+    "storage_bucket": "kart-x.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834201967579:android:49fc1a95eafe92462f65fe",
+        "android_client_info": {
+          "package_name": "com.shapps.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834201967579-pb8tr4j1qrhmaisk31fk0bnjdif8q5an.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9QJdxQxqLj3B61-w2BVYvv3f92O_Kiag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834201967579-pb8tr4j1qrhmaisk31fk0bnjdif8q5an.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

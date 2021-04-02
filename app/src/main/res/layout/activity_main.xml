@@ -18,16 +18,15 @@
         android:layout_margin="20dp"
         app:cardCornerRadius="30dp">
 
-        <Button
-            android:id="@+id/signin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Signin using Google"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/black"
-            android:onClick="signin"
-            />
 
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/signin_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Signinbutton"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="639dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
