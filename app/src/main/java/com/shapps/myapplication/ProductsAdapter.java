@@ -14,12 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class ProductsAdapter extends FirebaseRecyclerAdapter<ItemsDataClass, ProductsAdapter.ItemsViewHolder> {
 
-    private ArrayList<ItemsDataClass> itemsArrayList = new ArrayList<>();
     private Context mContext;
 
     /**
@@ -36,9 +36,9 @@ public class ProductsAdapter extends FirebaseRecyclerAdapter<ItemsDataClass, Pro
     protected void onBindViewHolder(@NonNull ItemsViewHolder holder, int position, @NonNull ItemsDataClass model) {
         holder.productName.setText(model.getName());
         holder.stars.setRating(model.getStars());
-        holder.price.setText(model.getPrice());
+        holder.price.setText("Rs. " + model.getPrice());
 
-        Glide.with((Context) mContext).load(model.getImg_url()).into(holder.productImage);
+        Picasso.get().load(model.getImg_url()).into(holder.productImage);
     }
 
     @NonNull

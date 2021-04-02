@@ -3,6 +3,7 @@ package com.shapps.myapplication;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -55,7 +56,7 @@ public class Dashboard extends AppCompatActivity {
     public void setRecyclerView(){
         mbase = FirebaseDatabase.getInstance().getReference();
         recyclerView = findViewById(R.id.products);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         FirebaseRecyclerOptions<ItemsDataClass> options = new FirebaseRecyclerOptions.Builder<ItemsDataClass>().setQuery(mbase, ItemsDataClass.class).build();
         adapter = new ProductsAdapter(options);
