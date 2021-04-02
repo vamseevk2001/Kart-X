@@ -2,12 +2,18 @@ package com.shapps.myapplication;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +28,10 @@ public class Dashboard extends AppCompatActivity {
     String img_url5 = "https://images-eu.ssl-images-amazon.com/images/G/31/img21/Monitors/Co-op/LG/ED_monitors_1242x450.jpg";//lg monitor
 
 
+    private RecyclerView recyclerView;
+    ProductsAdapter adapter;
+    DatabaseReference mbase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,16 +40,41 @@ public class Dashboard extends AppCompatActivity {
         actionBar.hide();
 
         ImageSlider imageSlider = (ImageSlider) findViewById(R.id.image_slider);
-
         List<SlideModel> imageList = new ArrayList<SlideModel>();
         imageList.add(new SlideModel(img_url1));
         imageList.add(new SlideModel(img_url2));
         imageList.add(new SlideModel(img_url3));
         imageList.add(new SlideModel(img_url4));
         imageList.add(new SlideModel(img_url5));
-
         imageSlider.setImageList(imageList, false);
 
+        setRecyclerView();
+
+    }
+
+    public void setRecyclerView(){
+        mbase = FirebaseDatabase.getInstance().getReference();
+        recyclerView = findViewById(R.id.products);
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+
+        FirebaseRecyclerOptions<ItemsDataClass> options = new FirebaseRecyclerOptions.Builder<ItemsDataClass>().setQuery(mbase, ItemsDataClass.class).build();
+        adapter = new ProductsAdapter(options);
+        recyclerView.setAdapter(adapter);
+
+
+    }
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+        adapter.stopListening();
     }
 
 
