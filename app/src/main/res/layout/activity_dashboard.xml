@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.motion.widget.MotionLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/ghostWhite"
+    android:background="@color/lightGrey"
     android:paddingTop="8dp"
     android:layout_height="match_parent"
-    tools:context=".Dashboard">
+    tools:context=".Dashboard"
+    app:layoutDescription="@xml/activity_dashboard_scene">
 
     <TextView
         android:id="@+id/app_logo"
@@ -42,38 +43,26 @@
         app:layout_constraintEnd_toStartOf="@id/avatar"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-
-
-<!--        <com.smarteist.autoimageslider.SliderView-->
-<!--            android:id="@+id/slider"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="190dp"-->
-<!--            android:layout_centerInParent="true"-->
-<!--            app:sliderAnimationDuration="600"-->
-<!--            app:sliderAutoCycleDirection="back_and_forth"-->
-<!--            app:sliderIndicatorAnimationDuration="600"-->
-<!--            app:sliderIndicatorEnabled="true"-->
-<!--            app:sliderIndicatorGravity="center_horizontal|bottom"-->
-<!--            app:sliderIndicatorMargin="15dp"-->
-<!--            app:sliderIndicatorOrientation="horizontal"-->
-<!--            app:sliderIndicatorPadding="3dp"-->
-<!--            app:sliderIndicatorRadius="2dp"-->
-<!--            app:sliderIndicatorSelectedColor="#5A5A5A"-->
-<!--            app:sliderIndicatorUnselectedColor="#FFF"-->
-<!--            app:sliderScrollTimeInSec="1" />-->
-
         <com.denzcoskun.imageslider.ImageSlider
             android:id="@+id/image_slider"
             android:layout_width="match_parent"
-            android:layout_height="280dp"
+            android:layout_height="150dp"
             android:layout_marginTop="10dp"
             app:corner_radius="5"
             app:layout_constraintTop_toBottomOf="@id/app_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:auto_cycle="true"
             app:period="1000"
             app:delay="0"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/products"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/image_slider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
