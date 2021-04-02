@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "907377934059",
+    "firebase_url": "https://kart-x-vs-default-rtdb.firebaseio.com",
+    "project_id": "kart-x-vs",
+    "storage_bucket": "kart-x-vs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907377934059:android:09d76f9b6cb8660fc008ae",
+        "android_client_info": {
+          "package_name": "com.shapps.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "907377934059-04u0mbshlq1l8d02veeoepquubtdcld6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyGIRH--ybUwMskTU3oLYyIUpgF5VR8Qo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "907377934059-04u0mbshlq1l8d02veeoepquubtdcld6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
