@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="logout">Logout</string>
+    <string name="mail" />
+    <string name="Signinbutton">Signin</string>
+
 </resources>
