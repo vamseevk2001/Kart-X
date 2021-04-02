@@ -107,4 +107,8 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+    public void gotodashboard(View view) {
+        Intent intent = new Intent(this, Dashboard.class);
+        startActivity(intent);
+    }
 }

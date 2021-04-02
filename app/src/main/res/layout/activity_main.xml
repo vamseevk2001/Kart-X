@@ -9,14 +9,24 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:cardBackgroundColor="@color/white"
-        android:layout_margin="20dp"
-        app:cardCornerRadius="30dp">
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:text="vamsee"
+            android:backgroundTint="@color/white"
+            android:onClick="gotodashboard"
+            />
 
 
     </androidx.cardview.widget.CardView>
@@ -26,7 +36,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Signinbutton"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="639dp" />
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
