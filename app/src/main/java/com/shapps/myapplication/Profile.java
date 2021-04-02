@@ -20,6 +20,9 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         logout=findViewById(R.id.logout_id);
+        name = findViewById(R.id.name);
+        mail = findViewById(R.id.mail);
+
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
            if(signInAccount !=null){
@@ -30,7 +33,7 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                Intent intent =new Intent(getApplicationContext(),Dashboard.class);
+                Intent intent =new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent);
             }
         });
