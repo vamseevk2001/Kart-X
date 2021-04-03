@@ -11,11 +11,14 @@ import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 
 public class Profile extends AppCompatActivity {
     TextView name,mail;
     Button logout;
+    ShapeableImageView avatar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,7 @@ public class Profile extends AppCompatActivity {
         logout=findViewById(R.id.logout_id);
         name = findViewById(R.id.name);
         mail = findViewById(R.id.mail);
+        avatar = findViewById(R.id.avatar);
 
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
