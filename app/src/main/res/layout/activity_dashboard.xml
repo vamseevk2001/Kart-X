@@ -10,6 +10,18 @@
     tools:context=".Dashboard"
     app:layoutDescription="@xml/activity_dashboard_scene">
 
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/image_slider"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:auto_cycle="true"
+        app:corner_radius="5"
+        app:delay="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_logo"
+        app:period="1000" />
+
     <TextView
         android:id="@+id/app_logo"
         android:layout_width="138dp"
@@ -43,19 +55,6 @@
         android:src="@drawable/ic_baseline_shopping_cart_24"
         app:layout_constraintEnd_toStartOf="@id/avatar"
         app:layout_constraintTop_toTopOf="parent" />
-
-        <com.denzcoskun.imageslider.ImageSlider
-            android:id="@+id/image_slider"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="10dp"
-            app:corner_radius="5"
-            app:layout_constraintTop_toBottomOf="@id/app_logo"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:auto_cycle="true"
-            app:period="1000"
-            app:delay="0"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/products"
