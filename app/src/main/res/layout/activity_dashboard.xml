@@ -5,10 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@color/lightGrey"
-    android:paddingTop="8dp"
     android:layout_height="match_parent"
     tools:context=".Dashboard"
     app:layoutDescription="@xml/activity_dashboard_scene">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/bg"
+        android:background="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <com.denzcoskun.imageslider.ImageSlider
         android:id="@+id/image_slider"
@@ -20,41 +28,51 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/app_logo"
-        app:period="1000" />
+        app:period="1000"
+        app:placeholder="@drawable/appstore" />
 
     <TextView
         android:id="@+id/app_logo"
         android:layout_width="138dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:fontFamily="monospace"
         android:text="Kart-X"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textFontWeight="1000"
+        android:gravity="center_vertical"
         android:textSize="25sp"
         android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/avatar"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:src="@drawable/ic_baseline_mood_24"
-        android:tint="@color/black"
-        android:onClick="loadProfile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/kart"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        app:civ_border_color="#FF000000"
         android:layout_marginEnd="5dp"
-        android:tint="@color/black"
+        android:src="@drawable/appstore"
+        android:onClick="loadProfile"
+        android:layout_marginTop="7dp"
+        app:civ_border_width="2dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="5dp" />
+
+    <ImageView
+        android:id="@+id/kart"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="7dp"
         android:src="@drawable/ic_baseline_shopping_cart_24"
         app:layout_constraintEnd_toStartOf="@id/avatar"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white" />
+
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/products"

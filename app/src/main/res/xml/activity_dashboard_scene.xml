@@ -13,8 +13,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:auto_cycle="true"
             app:period="1000"
-            app:delay="0"
-            />
+            app:delay="0"/>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">

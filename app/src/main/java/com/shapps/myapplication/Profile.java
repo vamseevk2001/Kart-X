@@ -26,7 +26,6 @@ public class Profile extends AppCompatActivity {
         logout=findViewById(R.id.logout_id);
         name = findViewById(R.id.name);
         mail = findViewById(R.id.mail);
-        avatar = findViewById(R.id.avatar);
 
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
@@ -34,6 +33,8 @@ public class Profile extends AppCompatActivity {
                name.setText(signInAccount.getDisplayName());
                mail.setText(signInAccount.getEmail());
                Log.d("display Picture",signInAccount.getPhotoUrl().toString());
+               Intent intent = new Intent(this, Dashboard.class);
+               intent.putExtra("displayImage", signInAccount.getPhotoUrl().toString());
            }
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
