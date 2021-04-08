@@ -2,6 +2,7 @@ package com.shapps.myapplication;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,6 +45,7 @@ public class Dashboard extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         ActionBar actionBar = getSupportActionBar();
@@ -69,6 +71,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     public void setRecyclerView(){
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         mbase = FirebaseDatabase.getInstance().getReference();
         recyclerView = findViewById(R.id.products);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
