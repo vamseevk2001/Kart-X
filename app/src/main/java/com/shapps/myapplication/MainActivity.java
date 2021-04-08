@@ -16,7 +16,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -106,6 +105,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void gotodashboard() {
+        Intent intent = new Intent(this, Dashboard.class);
+        startActivity(intent);
+    }
+
+    public void gotodashboard(View view) {
         Intent intent = new Intent(this, Dashboard.class);
         startActivity(intent);
     }

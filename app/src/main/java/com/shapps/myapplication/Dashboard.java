@@ -36,7 +36,6 @@ public class Dashboard extends AppCompatActivity {
     String img_url3 = "https://images-eu.ssl-images-amazon.com/images/G/31/img21/Laptops/Microsoft/Surface-Days/Surface-Pro-X-1242x450._CB656766391_SY500_.jpg"; //sony
     String img_url4 = "https://images-eu.ssl-images-amazon.com/images/G/31/img20/Audio/Sony/NYC/Boat_Hero_1242x450.jpg"; //boat
     String img_url5 = "https://images-eu.ssl-images-amazon.com/images/G/31/img21/Monitors/Co-op/LG/ED_monitors_1242x450.jpg";//lg monitor
-    Intent intent = getIntent();
 
     private RecyclerView recyclerView;
     ProductsAdapter adapter;
@@ -65,13 +64,13 @@ public class Dashboard extends AppCompatActivity {
         avatar = findViewById(R.id.avatar);
 
         Glide.with(getApplicationContext()).load(signInAccount.getPhotoUrl()).into(avatar);
-
+        //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         setRecyclerView();
 
     }
 
     public void setRecyclerView(){
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+
         mbase = FirebaseDatabase.getInstance().getReference();
         recyclerView = findViewById(R.id.products);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
