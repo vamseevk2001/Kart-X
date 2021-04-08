@@ -63,7 +63,7 @@ public class Dashboard extends AppCompatActivity {
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         avatar = findViewById(R.id.avatar);
 
-        Glide.with(getApplicationContext()).load(signInAccount.getPhotoUrl()).into(avatar);
+       // Glide.with(getApplicationContext()).load(signInAccount.getPhotoUrl()).into(avatar);
         //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         setRecyclerView();
 
