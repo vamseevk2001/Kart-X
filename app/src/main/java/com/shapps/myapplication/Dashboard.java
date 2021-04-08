@@ -78,8 +78,6 @@ public class Dashboard extends AppCompatActivity {
         FirebaseRecyclerOptions<ItemsDataClass> options = new FirebaseRecyclerOptions.Builder<ItemsDataClass>().setQuery(mbase, ItemsDataClass.class).build();
         adapter = new ProductsAdapter(options);
         recyclerView.setAdapter(adapter);
-
-
     }
     @Override
     protected void onStart()

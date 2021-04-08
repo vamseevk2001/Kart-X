@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseUser user =mAuth.getCurrentUser();
         if(user!=null){
-            gotodashboard();
+            dashboard();
         }
     }
     @Override
@@ -95,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            gotodashboard();
+                            dashboard();
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(MainActivity.this, "Sorry auth failed", Toast.LENGTH_SHORT).show();
@@ -104,12 +103,12 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    public void gotodashboard() {
+    public void dashboard() {
         Intent intent = new Intent(this, Dashboard.class);
         startActivity(intent);
     }
 
-    public void gotodashboard(View view) {
+    public void dashboard(View view) {
         Intent intent = new Intent(this, Dashboard.class);
         startActivity(intent);
     }
