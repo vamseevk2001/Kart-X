@@ -14,7 +14,7 @@
         <activity android:name=".Item_description"></activity>
         <activity android:name=".Profile" />
         <activity android:name=".Dashboard" />
-        <activity android:name=".cart"/>
+        <activity android:name=".cart" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
