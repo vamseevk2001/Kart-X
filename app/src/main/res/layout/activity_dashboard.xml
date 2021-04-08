@@ -72,9 +72,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/white" />
 
-
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/products"
         android:layout_width="0dp"
