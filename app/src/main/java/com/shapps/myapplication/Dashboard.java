@@ -98,4 +98,10 @@ public class Dashboard extends AppCompatActivity {
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
     }
+
+    public void gotoKart(View view) {
+        Intent intent = new Intent(this, cart.class);
+        startActivity(intent);
+
+    }
 }
