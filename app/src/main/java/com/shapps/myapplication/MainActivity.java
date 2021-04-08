@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void dashboard(View view) {
+    public void gotodashboard(View view) {
         Intent intent = new Intent(this, Dashboard.class);
         startActivity(intent);
     }
