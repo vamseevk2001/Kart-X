@@ -1,6 +1,7 @@
 package com.shapps.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,14 +10,12 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
 
 public class ProductsAdapter extends FirebaseRecyclerAdapter<ItemsDataClass, ProductsAdapter.ItemsViewHolder> {
 
@@ -37,8 +36,8 @@ public class ProductsAdapter extends FirebaseRecyclerAdapter<ItemsDataClass, Pro
         holder.productName.setText(model.getName());
         holder.stars.setRating(model.getStars());
         holder.price.setText("Rs. " + model.getPrice());
-
         Picasso.get().load(model.getImg_url()).into(holder.productImage);
+
     }
 
     @NonNull
@@ -54,6 +53,7 @@ public class ProductsAdapter extends FirebaseRecyclerAdapter<ItemsDataClass, Pro
         TextView productName, price;
         ImageView productImage;
         RatingBar stars;
+        CardView card;
 
 
         public ItemsViewHolder(@NonNull View itemView) {
@@ -62,9 +62,14 @@ public class ProductsAdapter extends FirebaseRecyclerAdapter<ItemsDataClass, Pro
             productImage = itemView.findViewById(R.id.product_image);
             price = itemView.findViewById(R.id.productPrice);
             stars = itemView.findViewById(R.id.productRating);
+            card = itemView.findViewById(R.id.item_card);
         }
     }
 
 
+}
+
+interface onItemClick {
 
 }
+

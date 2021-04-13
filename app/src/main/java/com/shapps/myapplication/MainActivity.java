@@ -110,4 +110,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Dashboard.class);
         startActivity(intent);
     }
+
+    public void gotoItem(View view) {
+        Intent intent = new Intent(this, Item_description.class);
+        startActivity(intent);
+    }
 }

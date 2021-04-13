@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".Item_description"></activity>
+        <activity android:name=".Item_description"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        </activity>
         <activity android:name=".Profile" />
         <activity android:name=".Dashboard" />
         <activity android:name=".cart" />

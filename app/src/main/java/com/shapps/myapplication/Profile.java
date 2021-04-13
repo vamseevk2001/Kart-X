@@ -8,13 +8,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
@@ -59,34 +62,82 @@ public class Profile extends AppCompatActivity {
     }
 
     public void editAddresss1(View view) {
+        TextInputEditText address1 = findViewById(R.id.address1_input);
+        Button doneAddress1 = findViewById(R.id.doneAddress1);
+        TextView setAddress1 = findViewById(R.id.address1);
+
+        //address1.setText(setAddress1.getText());
+        address1.setVisibility(View.VISIBLE);
+        doneAddress1.setVisibility(View.VISIBLE);
+        setAddress1.setVisibility(View.GONE);
+        address1.requestFocus();
+
+        //showing the keyboard to enter address 1 :
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(address1, 0);
     }
 
     public void editAddresss2(View view) {
+        TextInputEditText address2 = findViewById(R.id.address2_input);
+        Button doneAddress2 = findViewById(R.id.doneAddress2);
+        TextView setAddress2 = findViewById(R.id.address2);
+
+        //address1.setText(setAddress1.getText());
+        address2.setVisibility(View.VISIBLE);
+        doneAddress2.setVisibility(View.VISIBLE);
+        setAddress2.setVisibility(View.GONE);
+        address2.requestFocus();
+
+        //showing the keyboard to enter address 1 :
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(address2, 0);
+    }
+
+    public void editPhone(View view) {
+        TextInputEditText phoneNo = findViewById(R.id.phoneNoInput);
+        Button donePhone = findViewById(R.id.donePhone);
+        TextView setPhone = findViewById(R.id.phoneNo);
+
+        //address1.setText(setAddress1.getText());
+        phoneNo.setVisibility(View.VISIBLE);
+        donePhone.setVisibility(View.VISIBLE);
+        setPhone.setVisibility(View.GONE);
+        phoneNo.requestFocus();
+
+        //showing the keyboard to enter address 1 :
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(phoneNo, 0);
+    }
+    public void setPhone(View view) {
+        TextInputEditText phoneNo = findViewById(R.id.phoneNoInput);
+        TextView setPhone = findViewById(R.id.phoneNo);
+        setPhone.setText(phoneNo.getText());
+        view.setVisibility(View.GONE);
+        phoneNo.setVisibility(View.GONE);
+        setPhone.setVisibility(View.VISIBLE);
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public void setAddress1(View view) {
+        TextInputEditText address1 = findViewById(R.id.address1_input);
+        TextView setAddress1 = findViewById(R.id.address1);
+        setAddress1.setText(address1.getText());
+        view.setVisibility(View.GONE);
+        address1.setVisibility(View.GONE);
+        setAddress1.setVisibility(View.VISIBLE);
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public void setAddress2(View view) {
+        TextInputEditText address2 = findViewById(R.id.address2_input);
+        TextView setAddress2 = findViewById(R.id.address2);
+        setAddress2.setText(address2.getText());
+        view.setVisibility(View.GONE);
+        address2.setVisibility(View.GONE);
+        setAddress2.setVisibility(View.VISIBLE);
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
-
-
-//    fun display(view: View) {
-//        val nickname: EditText = findViewById(R.id.edit_nickname)
-//        val setName: TextView = findViewById(R.id.nickname)
-//        setName.text = nickname.text
-//        view.visibility = View.GONE
-//        nickname.visibility = View.GONE
-//        setName.visibility = View.VISIBLE
-//        //Hide keyboard
-//        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-//
-//    }
-//
-//    fun update(view: View) {
-//        val nickname: EditText = findViewById(R.id.edit_nickname)
-//        val doneButton: Button = findViewById(R.id.done)
-//        nickname.visibility = View.VISIBLE
-//        doneButton.visibility = View.VISIBLE
-//        view.visibility = View.GONE
-//        nickname.requestFocus()
-//        //show the keyboard
-//        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//        imm.showSoftInput(nickname, 0)
-//    }

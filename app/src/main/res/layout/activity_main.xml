@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
+        <com.google.android.gms.common.SignInButton
             android:id="@+id/signin_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -53,6 +53,13 @@
         android:onClick="gotodashboard"
         android:text="Temp signin Sharvesh "
         app:layout_constraintBottom_toTopOf="@+id/cardView2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:onClick="gotoItem"
+        android:text="Temp signin Sharvesh "
         app:layout_constraintTop_toTopOf="parent" />
 
 
