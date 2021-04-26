@@ -20,7 +20,7 @@ public class splashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         videoSplashScreen = findViewById(R.id.videoSplashScreen);
-        Uri video = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.kartxportrait);
+        Uri video = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.kartx);
         videoSplashScreen.setVideoURI(video);
         videoSplashScreen.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override

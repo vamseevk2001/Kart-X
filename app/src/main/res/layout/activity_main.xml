@@ -37,20 +37,5 @@
             android:src="@drawable/appstore" />
     </androidx.cardview.widget.CardView>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:onClick="gotodashboard"
-        android:text="Temp signin Sharvesh "
-        app:layout_constraintBottom_toTopOf="@+id/cardView2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:onClick="gotoItem"
-        android:text="Temp signin Sharvesh "
-        app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
