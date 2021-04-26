@@ -28,6 +28,8 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.shapps.myapplication.ProductsAdapter.*;
+
 public class Dashboard extends AppCompatActivity {
 
     //item images
@@ -76,7 +78,7 @@ public class Dashboard extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
         FirebaseRecyclerOptions<ItemsDataClass> options = new FirebaseRecyclerOptions.Builder<ItemsDataClass>().setQuery(mbase, ItemsDataClass.class).build();
-        adapter = new ProductsAdapter(options);
+        adapter = new ProductsAdapter(Dashboard.this, options);
         recyclerView.setAdapter(adapter);
     }
     @Override
@@ -104,4 +106,5 @@ public class Dashboard extends AppCompatActivity {
         startActivity(intent);
 
     }
+
 }

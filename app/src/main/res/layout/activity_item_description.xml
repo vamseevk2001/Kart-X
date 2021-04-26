@@ -1,37 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".Item_description"
-    app:layoutDescription="@xml/activity_item_description_scene">
+    tools:context=".Item_description">
 
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/bg"
+        android:background="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="10dp"
         android:id="@+id/desc_prod_image"
         android:src="@drawable/appstore"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/cardView3"
+        app:layout_constraintTop_toBottomOf="@id/bg" />
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:id="@+id/back"
+        android:onClick="goBack"
+        android:layout_marginTop="7dp"
+        app:tint="@color/white"
         android:src="@drawable/ic_baseline_keyboard_backspace_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/kart"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="7dp"
+        android:src="@drawable/ic_baseline_shopping_cart_24"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:elevation="10dp"
         app:cardBackgroundColor="@color/blue"
         app:cardCornerRadius="18dp"
@@ -54,13 +78,14 @@
 
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/prod_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-black"
                     android:text="Apple MackBook Pro"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
                     android:textColor="@color/white"
+                    android:layout_marginStart="5dp"
                     android:textFontWeight="800"
                     android:textStyle="bold" />
 
@@ -97,20 +122,22 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="sans-serif"
-                    android:text="Description : "
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:textColor="@color/white"
-                    android:textStyle="bold|italic" />
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:fontFamily="sans-serif"-->
+<!--                    android:text="Description : "-->
+<!--                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textStyle="bold|italic" />-->
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/productDescription"
                     android:fontFamily="sans-serif"
                     android:text="adfjadfjad;lfkjad;flkajdf;alkdjfa;ldkfja;dlfkja;dlfkja;dflk;aldkfja;dlkfjad;flkjadlkjfa;dlfkjas;dlfa;dlkjfa;dklfjad;flkadkfja;dlfkjas;dflkjadf;lkaj"
                     android:textColor="@color/white" />
@@ -120,33 +147,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:layout_marginTop="5dp"
                     android:backgroundTint="@color/white"
                     android:text="Add to Kart"
                     android:textColor="@color/blue"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="sans-serif"
-                    android:text="Features : "
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-                    android:textColor="@color/white"
-                    android:textStyle="bold|italic" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="sans-serif"
-                    android:lineSpacingExtra="5dp"
-                    android:text="adfjadfjad;lfkjad;flkajdf;\nalkdjfa;l\ndkfja;dlfkja;dlfkja;dflk;aldkfja;dlkfjad;f\nlkjadlkjfa;dlfkjas;dlfa;dlkjfa\nja;dlkfja sd;lfkajd f;alkdjfa;ldkfjas;dflkja;dflk\nldfkjad;lfkajd;flaksjdfaslfkajd;flkaj\n;dklfjad;flkadkfja;dlfkjas\n;dflkjadf;lkaj"
-                    android:textColor="@color/white" />
-
-
-
 
             </LinearLayout>
 
@@ -156,13 +160,6 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35" />
 
 
-
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

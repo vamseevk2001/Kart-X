@@ -3,6 +3,7 @@ package com.shapps.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 public class products extends AppCompatActivity {
 
@@ -11,4 +12,5 @@ public class products extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
     }
+
 }
