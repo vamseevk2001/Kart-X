@@ -4,19 +4,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:forceDarkAllowed="false"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".Item_description">
 
 
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:id="@+id/bg"-->
+<!--        android:background="@color/blue"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
+
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/bg"
-        android:background="@color/blue"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:id="@+id/back"
+        android:onClick="goBack"
+        android:layout_margin="15dp"
+        app:tint="@color/black"
+        android:src="@drawable/ic_baseline_keyboard_backspace_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
@@ -28,29 +40,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/cardView3"
-        app:layout_constraintTop_toBottomOf="@id/bg" />
+        app:layout_constraintTop_toBottomOf="@id/back" />
 
-    <ImageView
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:id="@+id/back"
-        android:onClick="goBack"
-        android:layout_marginTop="7dp"
-        app:tint="@color/white"
-        android:src="@drawable/ic_baseline_keyboard_backspace_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/kart"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginTop="7dp"
-        android:src="@drawable/ic_baseline_shopping_cart_24"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@color/white" />
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
@@ -154,7 +147,18 @@
                     android:text="Add to Kart"
                     android:background="@color/white"
                     android:textColor="@color/blue"
+                    android:visibility="visible"
                     android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/gotoKart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Add to Kart"
+                        android:background="@color/white"
+                        android:visibility="gone"
+                        android:textColor="@color/blue"
+                        android:textStyle="bold" />
 
                 </androidx.cardview.widget.CardView>
 

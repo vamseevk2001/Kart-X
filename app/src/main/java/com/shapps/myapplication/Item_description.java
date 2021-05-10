@@ -36,9 +36,6 @@ public class Item_description extends AppCompatActivity {
         product_price = findViewById(R.id.productPrice);
         product_rating = findViewById(R.id.productRating);
 
-
-
-
         String itemKey = getIntent().getStringExtra("key");
         Log.println(Log.ASSERT, "item", itemKey);
         ref = FirebaseDatabase.getInstance().getReference().child(itemKey);

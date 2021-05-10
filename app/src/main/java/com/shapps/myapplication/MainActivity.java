@@ -91,7 +91,10 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            FirebaseUser firebaseuser = mAuth.getCurrentUser();
+                            Users user = new Users(firebaseuser.getUid(), firebaseuser.getDisplayName(), firebaseuser.getPhotoUrl().toString());
+                            UserDao userDao = new UserDao();
+                            userDao.addUser(user);
                             dashboard();
                         } else {
                             // If sign in fails, display a message to the user.

@@ -32,23 +32,6 @@ import java.util.ArrayList;
 public class ProductsAdapter extends FirebaseRecyclerAdapter<ItemsDataClass, ProductsAdapter.ItemsViewHolder> {
 
     private Context mcon;
-   // private onItemClickListener mListener;
-
-
-//    public interface onItemClickListener {
-//        void onItemClick(FirebaseRecyclerOptions<ItemsDataClass> options, int position);
-//    }
-//
-//    public void setOnItemClickListener(onItemClickListener listener){
-//        mListener = listener;
-//    }
-
-    /**
-     * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
-     * {@link FirebaseRecyclerOptions} for configuration options.
-     *
-     * @param options
-     */
     public ProductsAdapter(Context con, @NonNull FirebaseRecyclerOptions<ItemsDataClass> options) {
         super(options);
         mcon = con;
@@ -96,44 +79,7 @@ public class ProductsAdapter extends FirebaseRecyclerAdapter<ItemsDataClass, Pro
             stars = itemView.findViewById(R.id.productRating);
             card = itemView.findViewById(R.id.item_card);
             v = itemView;
-//           itemView.setOnClickListener(new View.OnClickListener(){
-//
-//               @Override
-//               public void onClick(View v) {
-//                   if(mListener != null){
-//                       int position = getAdapterPosition();
-//                       if(position != RecyclerView.NO_POSITION){
-//                           mListener.onItemClick(,position);
-//                       }
-//                   }
-//               }
-//           });
         }
-
-//        @Override
-//        public void onClick(View v) {
-//            final ArrayList<ItemsDataClass> items = new ArrayList<>();
-//            DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-//            ref.addListenerForSingleValueEvent(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                    for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-//                        items.add(snapshot.getValue(ItemsDataClass.class));
-//                    }
-//
-//                    int position = getLayoutPosition();
-//
-//                    Intent intent = new Intent(mContext, Item_description.class);
-//                    intent.putExtra("name", );
-//
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//
-//                }
-//            });
-//        }
     }
 
 
