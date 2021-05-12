@@ -8,14 +8,13 @@
 
     <Button
         android:id="@+id/pay_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Proceed to Pay"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.935"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="orders"
         app:layout_constraintVertical_bias="0.976" />
 
     <TextView
@@ -24,20 +23,18 @@
         android:layout_height="wrap_content"
         android:text="Your Orders"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/orders"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.075" />
+        />
 
     <androidx.recyclerview.widget.RecyclerView
-        Of="@+id/your_orders"
-        android:layout_width="409dp"
-        android:layout_height="530dp"
-        android:layout_marginBottom="36dp"
+        android:id="@id/orders"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/pay_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="" />
+        app:layout_constraintTop_toBottomOf="@id/your_orders" />
 </androidx.constraintlayout.widget.ConstraintLayout>
