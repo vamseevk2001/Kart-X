@@ -8,6 +8,13 @@ public class Users {
    private String img;
    private ArrayList<String> kart = new ArrayList<>();
 
+    public Users(String uid, String name, String img, ArrayList<String> kart) {
+        this.uid = uid;
+        this.name = name;
+        this.img = img;
+        this.kart = kart;
+    }
+
     public Users(String uid, String name, String img) {
         this.uid = uid;
         this.name = name;
