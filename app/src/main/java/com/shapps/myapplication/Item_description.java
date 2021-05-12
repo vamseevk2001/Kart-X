@@ -13,11 +13,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Item_description extends AppCompatActivity {
 
@@ -25,6 +29,8 @@ public class Item_description extends AppCompatActivity {
     TextView product_name, product_desc, product_price;
     RatingBar product_rating;
     DatabaseReference ref;
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,5 +80,19 @@ public class Item_description extends AppCompatActivity {
         Intent intent = new Intent(this, Dashboard.class);
         startActivity(intent);
         finish();
+    }
+
+    public void addToKart(View view) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference userCollection = db.collection("users");
+        mAuth= FirebaseAuth.getInstance();
+        FirebaseUser firebaseuser = mAuth.getCurrentUser();
+
+       // userCollection.document(firebaseuser.getUid())
+    }
+
+    public void goToKart(View view) {
+        Intent intent = new Intent(this, cart.class);
+        startActivity(intent);
     }
 }

@@ -1,9 +1,12 @@
 package com.shapps.myapplication;
 
+import java.util.ArrayList;
+
 public class Users {
    private String uid;
    private String name;
    private String img;
+   private ArrayList<String> kart = new ArrayList<>();
 
     public Users(String uid, String name, String img) {
         this.uid = uid;

@@ -9,16 +9,6 @@
     android:background="@color/white"
     tools:context=".Item_description">
 
-
-<!--    <ImageView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:id="@+id/bg"-->
-<!--        android:background="@color/blue"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"/>-->
-
     <ImageView
         android:layout_width="45dp"
         android:layout_height="45dp"
@@ -145,6 +135,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Add to Kart"
+                    android:onClick="addToKart"
                     android:background="@color/white"
                     android:textColor="@color/blue"
                     android:visibility="visible"
@@ -155,6 +146,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Add to Kart"
+                        android:onClick="goToKart"
                         android:background="@color/white"
                         android:visibility="gone"
                         android:textColor="@color/blue"

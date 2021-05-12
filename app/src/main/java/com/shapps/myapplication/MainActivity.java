@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         mAuth= FirebaseAuth.getInstance();
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-        mAuth= FirebaseAuth.getInstance();
         // Create a request to google
         createRequest();
         findViewById(R.id.signin_button).setOnClickListener(new View.OnClickListener() {
