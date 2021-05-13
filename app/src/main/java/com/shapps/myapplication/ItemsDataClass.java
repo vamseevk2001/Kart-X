@@ -49,11 +49,12 @@ public class ItemsDataClass {
 
     public ItemsDataClass(){}
 
-    public ItemsDataClass(String name, String img_url, int price, String description) {
+
+    public ItemsDataClass(String name, String img_url, int price, String description, int stars) {
         this.name = name;
         this.img_url = img_url;
         this.price = price;
         this.description = description;
+        this.stars = stars;
     }
-
 }

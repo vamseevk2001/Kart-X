@@ -8,10 +8,8 @@ public class Users {
    private String img;
    private ArrayList<String> kart = new ArrayList<>();
 
-    public Users(String uid, String name, String img, ArrayList<String> kart) {
+    public Users(String uid, ArrayList<String> kart) {
         this.uid = uid;
-        this.name = name;
-        this.img = img;
         this.kart = kart;
     }
 
@@ -48,4 +46,11 @@ public class Users {
     }
 
 
+    public ArrayList<String> getKart() {
+        return kart;
+    }
+
+    public void setKart(ArrayList<String> kart) {
+        this.kart = kart;
+    }
 }

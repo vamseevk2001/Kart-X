@@ -61,18 +61,14 @@ public class Dashboard extends AppCompatActivity {
         imageList.add(new SlideModel(img_url5));
         imageSlider.setImageList(imageList, false);
 
-
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         avatar = findViewById(R.id.avatar);
-
-       //Glide.with(getApplicationContext()).load(signInAccount.getPhotoUrl()).into(avatar);
-        //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        Glide.with(this).load(signInAccount.getPhotoUrl()).circleCrop().into(avatar);
         setRecyclerView();
 
     }
 
     public void setRecyclerView(){
-
         mbase = FirebaseDatabase.getInstance().getReference();
         recyclerView = findViewById(R.id.products);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
