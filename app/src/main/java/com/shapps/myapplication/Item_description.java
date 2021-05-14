@@ -20,6 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class Item_description extends AppCompatActivity {
     ImageView product_img;
     TextView product_name, product_desc, product_price;
@@ -29,6 +31,7 @@ public class Item_description extends AppCompatActivity {
     String itemKey, name, imgUrl, description;
     long price, stars;
     private FirebaseAuth mAuth;
+    public ArrayList<String> cartItems = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +86,7 @@ public class Item_description extends AppCompatActivity {
         UserDao userDao = new UserDao();
         ItemsDataClass cart = new ItemsDataClass(name, imgUrl, (int) price, description, (int) stars);
         userDao.updateCart(firebaseuser.getUid(), cart);
+        cartItems.add(name);
         view.setVisibility(View.GONE);
         Button gotocart = findViewById(R.id.gotoKart);
         gotocart.setVisibility(View.VISIBLE);

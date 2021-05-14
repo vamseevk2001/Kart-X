@@ -66,20 +66,8 @@ public class CartAdapter extends FirestoreRecyclerAdapter<ItemsDataClass, CartAd
             public void onClick(View v) {
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 FirebaseUser firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
-                db.collection("users").document(firebaseuser.getUid()).
-                        collection("kart").
-                        document(model.getName()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(mcon.getApplicationContext(), "Item deleted successfully....", Toast.LENGTH_SHORT).show();
-                        //total -= model.getPrice();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(mcon.getApplicationContext(), "Sorry there was an error deleting your item ...", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                UserDao userDao = new UserDao();
+                userDao.deleteItem(mcon.getApplicationContext(), firebaseuser.getUid(), model.getName());
             }
         });
     }
