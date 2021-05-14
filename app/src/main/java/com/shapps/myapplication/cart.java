@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -25,6 +26,8 @@ public class cart extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     CartAdapter adapter;
+    Query query;
+    TextView total;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,21 +35,21 @@ public class cart extends AppCompatActivity {
         setContentView(R.layout.activity_cart);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-
         setRecyclerView();
+
     }
 
     public void setRecyclerView(){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
-        Query query = db.collection("users").document(firebaseuser.getUid()).collection("kart");
+        query = db.collection("users").document(firebaseuser.getUid()).collection("kart");
         FirestoreRecyclerOptions<ItemsDataClass> response = new FirestoreRecyclerOptions.Builder<ItemsDataClass>().setQuery(query, ItemsDataClass.class).build();
-
         recyclerView = findViewById(R.id.orders);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         adapter = new CartAdapter(cart.this, response);
         recyclerView.setAdapter(adapter);
+        total = findViewById(R.id.total);
+        total.setText("Rs " + CartAdapter.total);
     }
 
     @Override

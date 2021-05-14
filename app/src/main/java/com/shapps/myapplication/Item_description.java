@@ -83,10 +83,14 @@ public class Item_description extends AppCompatActivity {
         UserDao userDao = new UserDao();
         ItemsDataClass cart = new ItemsDataClass(name, imgUrl, (int) price, description, (int) stars);
         userDao.updateCart(firebaseuser.getUid(), cart);
+        view.setVisibility(View.GONE);
+        Button gotocart = findViewById(R.id.gotoKart);
+        gotocart.setVisibility(View.VISIBLE);
     }
 
     public void goToKart(View view) {
         Intent intent = new Intent(this, cart.class);
         startActivity(intent);
+        finish();
     }
 }

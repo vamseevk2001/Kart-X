@@ -1,6 +1,7 @@
 package com.shapps.myapplication;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,11 +18,19 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
 
 public class CartAdapter extends FirestoreRecyclerAdapter<ItemsDataClass, CartAdapter.ItemsViewHolder> {
 
     private Context mcon;
+    public static int total = 0;
 
     class ItemsViewHolder extends RecyclerView.ViewHolder{
 
@@ -49,6 +59,29 @@ public class CartAdapter extends FirestoreRecyclerAdapter<ItemsDataClass, CartAd
         holder.stars.setRating(model.getStars());
         holder.price.setText("Rs. " + model.getPrice());
         Picasso.get().load(model.getImg_url()).into(holder.image);
+        total += model.getPrice();
+        Log.d("total", String.valueOf(total));
+        holder.remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                FirebaseUser firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
+                db.collection("users").document(firebaseuser.getUid()).
+                        collection("kart").
+                        document(model.getName()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(mcon.getApplicationContext(), "Item deleted successfully....", Toast.LENGTH_SHORT).show();
+                        //total -= model.getPrice();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(mcon.getApplicationContext(), "Sorry there was an error deleting your item ...", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        });
     }
 
     @NonNull
