@@ -27,7 +27,12 @@
         <activity android:name=".Profile" />
         <activity android:name=".Dashboard" />
         <activity android:name=".cart" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_AYtjhcZdXff46R"
+            />
     </application>
 
 </manifest>
