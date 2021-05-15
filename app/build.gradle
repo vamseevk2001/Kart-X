@@ -49,7 +49,7 @@ dependencies {
     implementation 'com.github.denzcoskun:ImageSlideshow:0.0.6'
 
     implementation platform('com.google.firebase:firebase-bom:26.8.0')
-
+    implementation "com.shreyaspatil:EasyUpiPayment:2.0"
     implementation "com.google.firebase:firebase-firestore:11.4.2"
     implementation "com.firebaseui:firebase-ui-auth:3.0.0"
     implementation "com.firebaseui:firebase-ui-firestore:3.0.0"

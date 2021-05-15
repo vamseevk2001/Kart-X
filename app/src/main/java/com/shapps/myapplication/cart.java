@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -64,5 +66,11 @@ public class cart extends AppCompatActivity {
     {
         super.onStop();
         adapter.stopListening();
+    }
+
+    public void proceedPay(View view) {
+        Intent intent = new Intent(this,Payments.class);
+        startActivity(intent);
+        finish();
     }
 }
