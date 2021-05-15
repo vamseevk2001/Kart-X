@@ -1,12 +1,18 @@
 package com.shapps.myapplication;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -19,15 +25,22 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import static android.content.ContentValues.TAG;
 
 public class cart extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     CartAdapter adapter;
     Query query;
-    TextView total;
+    TextView totalView;
+    ConstraintLayout empty;
+    Button pay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +49,14 @@ public class cart extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         setRecyclerView();
+
+        UserDao cart = new UserDao();
+        cart.cartTotal(this);
+        //long totalPrice = getIntent().getLongExtra("totalPrice", 100);
+        setTotal();
+        empty = findViewById(R.id.emptyCart);
+        pay = findViewById(R.id.pay_button);
+        totalView = findViewById(R.id.total);
 
     }
 
@@ -48,8 +69,33 @@ public class cart extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new CartAdapter(cart.this, response);
         recyclerView.setAdapter(adapter);
-        total = findViewById(R.id.total);
-        total.setText("Rs " + CartAdapter.total);
+        setTotal();
+
+
+    }
+
+    void setTotal(){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference userCollection = db.collection("users");
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseuser = mAuth.getCurrentUser();
+        userCollection.document(firebaseuser.getUid()).collection("kart").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable  QuerySnapshot value,  FirebaseFirestoreException error) {
+                long total = 0;
+                    for (DocumentSnapshot document : value.getDocuments()) {
+                        total += ((Long) document.get("price"));
+                }
+                totalView = findViewById(R.id.total);
+                totalView.setText("Rs " + total);
+                if(total == 0){
+                    empty.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
+                    pay.setVisibility(View.GONE);
+                    totalView.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     @Override

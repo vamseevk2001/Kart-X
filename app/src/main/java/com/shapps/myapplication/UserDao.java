@@ -1,28 +1,33 @@
 package com.shapps.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.auth.User;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
+
+import static android.content.ContentValues.TAG;
 
 public class UserDao {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference userCollection = db.collection("users");
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    FirebaseUser firebaseuser = mAuth.getCurrentUser();
 
     void addUser(Users user){
         userCollection.document(user.getUid()).set(user);
@@ -46,11 +51,38 @@ public class UserDao {
             }
         });
     }
-    void cartTotal(ArrayList<String> items){
-        int total = 0;
-        for(int i = 0; i<items.size(); i++){
-            items.get(i);
-        }
+
+    int noOfItems(){
+        final int[] count = {0};
+        userCollection.document(firebaseuser.getUid()).collection("kart").get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (DocumentSnapshot document : task.getResult()) {
+                            count[0]++;
+                        }
+                    } else {
+                        Log.d(TAG, "Error getting documents: ", task.getException());
+                    }
+                });
+        return count[0];
+    }
+
+    void cartTotal(Context con){
+
+        //AtomicLong total = new AtomicLong();
+        userCollection.document(firebaseuser.getUid()).collection("kart").get().addOnCompleteListener(task -> {
+            //int total = 0;
+            if (task.isSuccessful()) {
+                for (DocumentSnapshot document : task.getResult()) {
+                    int total = 0;
+                    total += ((Long) document.get("price"));
+                    Intent intent = new Intent(con.getApplicationContext(), cart.class);
+                    intent.putExtra("totalPrice", total);
+                }
+            } else {
+                Log.d(TAG, "Error getting documents: ", task.getException());
+            }
+        });
     }
 
 }
