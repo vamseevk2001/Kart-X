@@ -69,9 +69,6 @@ public class cart extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new CartAdapter(cart.this, response);
         recyclerView.setAdapter(adapter);
-        setTotal();
-
-
     }
 
     void setTotal(){
@@ -87,7 +84,7 @@ public class cart extends AppCompatActivity {
                         total += ((Long) document.get("price"));
                 }
                 totalView = findViewById(R.id.total);
-                totalView.setText("Rs " + total);
+                totalView.setText("Total amount : Rs " + total);
                 if(total == 0){
                     empty.setVisibility(View.VISIBLE);
                     recyclerView.setVisibility(View.GONE);
@@ -110,5 +107,17 @@ public class cart extends AppCompatActivity {
     {
         super.onStop();
         adapter.stopListening();
+    }
+
+    public void back(View view) {
+        Intent intent = new Intent(this, Dashboard.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void dashboard(View view) {
+        Intent intent = new Intent(this, Dashboard.class);
+        startActivity(intent);
+        finish();
     }
 }
