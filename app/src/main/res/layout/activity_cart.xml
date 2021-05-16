@@ -10,9 +10,11 @@
         android:id="@+id/pay_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Proceed to Pay"
         android:layout_margin="20dp"
+        android:onClick="proceedPay"
+        android:text="Proceed to Pay"
         app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/orders" />
