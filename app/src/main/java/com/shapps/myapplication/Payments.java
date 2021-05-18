@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.razorpay.Checkout;
@@ -16,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Payments extends AppCompatActivity implements PaymentResultListener {
-private EditText amount;
+private TextView amount;
 private Button pay;
 
     @Override
@@ -28,7 +29,7 @@ private Button pay;
     }
 
     public void Gpay(View view) {
-        String amt =amount.getText().toString();
+        String amt = getIntent().getStringExtra("total");
         if(amt.isEmpty()){
             Toast.makeText(this,"Enter Amount",Toast.LENGTH_SHORT).show();
         }

@@ -122,6 +122,7 @@ public class cart extends AppCompatActivity {
 
     public void proceedPay(View view) {
         Intent intent = new Intent(this, Payments.class);
+        intent.putExtra("total",totalView.getText());
         startActivity(intent);
     }
 }
