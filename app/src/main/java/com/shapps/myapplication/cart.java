@@ -52,7 +52,6 @@ public class cart extends AppCompatActivity {
 
         UserDao cart = new UserDao();
         cart.cartTotal(this);
-        //long totalPrice = getIntent().getLongExtra("totalPrice", 100);
         setTotal();
         empty = findViewById(R.id.emptyCart);
         pay = findViewById(R.id.pay_button);
@@ -119,5 +118,10 @@ public class cart extends AppCompatActivity {
         Intent intent = new Intent(this, Dashboard.class);
         startActivity(intent);
         finish();
+    }
+
+    public void proceedPay(View view) {
+        Intent intent = new Intent(this, Payments.class);
+        startActivity(intent);
     }
 }

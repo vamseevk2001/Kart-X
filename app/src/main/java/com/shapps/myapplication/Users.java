@@ -1,22 +1,21 @@
 package com.shapps.myapplication;
 
-import java.util.ArrayList;
-
 public class Users {
    private String uid;
    private String name;
    private String img;
-   private ArrayList<String> kart = new ArrayList<>();
+   private String address;
+   private String phone;
 
-    public Users(String uid, ArrayList<String> kart) {
-        this.uid = uid;
-        this.kart = kart;
-    }
 
     public Users(String uid, String name, String img) {
         this.uid = uid;
         this.name = name;
         this.img = img;
+    }
+
+    public Users(String address){
+        this.address = address;
     }
 
     public String getUid(){
@@ -46,11 +45,19 @@ public class Users {
     }
 
 
-    public ArrayList<String> getKart() {
-        return kart;
+    public String getAddress() {
+        return address;
     }
 
-    public void setKart(ArrayList<String> kart) {
-        this.kart = kart;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

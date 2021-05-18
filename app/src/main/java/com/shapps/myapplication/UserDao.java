@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -15,10 +16,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.content.ContentValues.TAG;
 
@@ -31,6 +34,34 @@ public class UserDao {
 
     void addUser(Users user){
         userCollection.document(user.getUid()).set(user);
+    }
+
+    void addAddress(Users address){
+        HashMap<String, Object> addr = new HashMap<>();
+        addr.put("Adddress", address);
+        userCollection.document(firebaseuser.getUid()).update(addr);
+    }
+
+    void getAddress(TextView view) {
+        userCollection.document(firebaseuser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                view.setText(documentSnapshot.get("address").toString());
+            }
+        });
+    }
+
+    void getPhone(TextView view){
+        userCollection.document(firebaseuser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                view.setText(documentSnapshot.get("phone").toString());
+            }
+        });
+    }
+
+    void addPhone(String phone){
+        userCollection.document(firebaseuser.getUid()).set(phone);
     }
 
     void updateCart(String uid, ItemsDataClass cart){
@@ -50,21 +81,6 @@ public class UserDao {
                 Toast.makeText(context.getApplicationContext(), "Sorry there was an error deleting your item ...", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    int noOfItems(){
-        final int[] count = {0};
-        userCollection.document(firebaseuser.getUid()).collection("kart").get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        for (DocumentSnapshot document : task.getResult()) {
-                            count[0]++;
-                        }
-                    } else {
-                        Log.d(TAG, "Error getting documents: ", task.getException());
-                    }
-                });
-        return count[0];
     }
 
     void cartTotal(Context con){
