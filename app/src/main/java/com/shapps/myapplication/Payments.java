@@ -26,14 +26,17 @@ private Button pay;
         setContentView(R.layout.activity_payments);
         amount=findViewById(R.id.amt);
         pay=findViewById(R.id.pay);
+        String amt = getIntent().getStringExtra("total");
+        amount.setText(amt);
     }
 
     public void Gpay(View view) {
-        String amt = getIntent().getStringExtra("total");
+        String amt = (String) amount.getText();
         if(amt.isEmpty()){
             Toast.makeText(this,"Enter Amount",Toast.LENGTH_SHORT).show();
         }
-else{
+
+        else{
             startPayment(amt);
         }
     }
