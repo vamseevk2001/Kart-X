@@ -26,8 +26,7 @@ private TextView amount;
 
     public void Gpay(View view) {
         String amt = (String) amount.getText();
-            startPayment(amt);
-
+        startPayment(amt);
     }
 
     private void startPayment(String amount) {
