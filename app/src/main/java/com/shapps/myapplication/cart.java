@@ -41,6 +41,7 @@ public class cart extends AppCompatActivity {
     TextView totalView;
     ConstraintLayout empty;
     Button pay;
+    long totalPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +85,7 @@ public class cart extends AppCompatActivity {
                 }
                 totalView = findViewById(R.id.total);
                 totalView.setText("Total amount : Rs " + total);
+                totalPrice = total;
                 if(total == 0){
                     empty.setVisibility(View.VISIBLE);
                     recyclerView.setVisibility(View.GONE);
@@ -122,7 +124,7 @@ public class cart extends AppCompatActivity {
 
     public void proceedPay(View view) {
         Intent intent = new Intent(this, Payments.class);
-        intent.putExtra("total", totalView.getText());
+        intent.putExtra("total", totalPrice);
         startActivity(intent);
     }
 }

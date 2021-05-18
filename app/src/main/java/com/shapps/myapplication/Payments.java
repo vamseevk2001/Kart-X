@@ -26,8 +26,8 @@ private Button pay;
         setContentView(R.layout.activity_payments);
         amount=findViewById(R.id.amt);
         pay=findViewById(R.id.pay);
-        String amt = getIntent().getStringExtra("total");
-        amount.setText(amt);
+        long amt = getIntent().getLongExtra("total", 0);
+        amount.setText(String.valueOf(amt));
     }
 
     public void Gpay(View view) {
