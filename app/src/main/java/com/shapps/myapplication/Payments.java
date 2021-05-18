@@ -38,6 +38,7 @@ private TextView amount;
             object.put("name","Sharvesh");
             object.put("description","Payment From Cart");
             double amo=Double.parseDouble(amount);
+            amo=amo*100;
             object.put("amount",amo);
             object.put("currency","INR");
             object.put("prefill.contact","7904592032");
