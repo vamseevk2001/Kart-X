@@ -122,9 +122,7 @@ public class Profile extends AppCompatActivity {
     public void setAddress1(View view) {
         TextInputEditText address1 = findViewById(R.id.address1_input);
         TextView setAddress1 = findViewById(R.id.address1);
-        UserDao user = new UserDao();
-        user.addAddress(new Users(address1.getText().toString()));
-        user.getAddress(setAddress1);
+        setAddress1.setText(address1.getText());
         view.setVisibility(View.GONE);
         address1.setVisibility(View.GONE);
         setAddress1.setVisibility(View.VISIBLE);

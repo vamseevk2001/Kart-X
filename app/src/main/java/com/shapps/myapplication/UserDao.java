@@ -20,6 +20,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,33 +37,25 @@ public class UserDao {
         userCollection.document(user.getUid()).set(user);
     }
 
-    void addAddress(Users address){
+
+    void addAddress(Address address){
         HashMap<String, Object> addr = new HashMap<>();
-        addr.put("Adddress", address);
+        addr.put("Address", address);
         userCollection.document(firebaseuser.getUid()).update(addr);
     }
 
-    void getAddress(TextView view) {
+    Boolean checkAddress(){
+        final Boolean[] check = new Boolean[1];
         userCollection.document(firebaseuser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                view.setText(documentSnapshot.get("address").toString());
+                if (documentSnapshot.contains("Address"))
+                    check[0] = true;
             }
         });
+        return check[0];
     }
 
-    void getPhone(TextView view){
-        userCollection.document(firebaseuser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                view.setText(documentSnapshot.get("phone").toString());
-            }
-        });
-    }
-
-    void addPhone(String phone){
-        userCollection.document(firebaseuser.getUid()).set(phone);
-    }
 
     void updateCart(String uid, ItemsDataClass cart){
         userCollection.document(uid).collection("kart").document(cart.getName()).set(cart);
@@ -73,7 +66,6 @@ public class UserDao {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(context.getApplicationContext(), "Item deleted successfully....", Toast.LENGTH_SHORT).show();
-                //total -= model.getPrice();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

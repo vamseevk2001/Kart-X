@@ -4,9 +4,6 @@ public class Users {
    private String uid;
    private String name;
    private String img;
-   private String address;
-   private String phone;
-
 
     public Users(String uid, String name, String img) {
         this.uid = uid;
@@ -14,9 +11,6 @@ public class Users {
         this.img = img;
     }
 
-    public Users(String address){
-        this.address = address;
-    }
 
     public String getUid(){
        return this.uid;
@@ -44,20 +38,4 @@ public class Users {
         this.img = img;
     }
 
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 }

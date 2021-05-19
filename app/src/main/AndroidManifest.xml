@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".Payments"></activity>
+        <activity android:name=".AddressInput"></activity>
+        <activity android:name=".Payments" />
         <activity
             android:name=".splashScreen"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
@@ -31,8 +32,7 @@
 
         <meta-data
             android:name="com.razorpay.ApiKey"
-            android:value="rzp_test_AYtjhcZdXff46R"
-            />
+            android:value="rzp_test_AYtjhcZdXff46R" />
     </application>
 
 </manifest>

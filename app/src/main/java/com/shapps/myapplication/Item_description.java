@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Item_description extends AppCompatActivity {
@@ -60,7 +61,8 @@ public class Item_description extends AppCompatActivity {
                     Log.d("STARS", name);
                     product_name.setText(name);
                     product_desc.setText(description);
-                    product_price.setText(String.format("Rs %d", price));
+                    DecimalFormat formatter = new DecimalFormat("###,###,##0");
+                    product_price.setText(String.format("Rs %s", formatter.format((double) price)));
                     product_rating.setRating(stars);
                     Glide.with(getApplicationContext()).load(imgUrl).into(product_img);
                 }

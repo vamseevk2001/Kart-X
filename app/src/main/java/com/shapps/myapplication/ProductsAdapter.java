@@ -2,7 +2,6 @@ package com.shapps.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
-import android.provider.SyncStateContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,22 +11,14 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.view.menu.MenuView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.firebase.ui.database.SnapshotParser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.core.Constants;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.text.DecimalFormat;
 
 public class ProductsAdapter extends FirebaseRecyclerAdapter<ItemsDataClass, ProductsAdapter.ItemsViewHolder> {
 
@@ -41,7 +32,9 @@ public class ProductsAdapter extends FirebaseRecyclerAdapter<ItemsDataClass, Pro
     protected void onBindViewHolder(@NonNull ItemsViewHolder holder, int position, @NonNull ItemsDataClass model) {
         holder.productName.setText(model.getName());
         holder.stars.setRating(model.getStars());
-        holder.price.setText("Rs. " + model.getPrice());
+        DecimalFormat formatter = new DecimalFormat("###,###,##0");
+        String productPrice = formatter.format((double) model.getPrice());
+        holder.price.setText("Rs "+ productPrice);
         Picasso.get().load(model.getImg_url()).into(holder.productImage);
         holder.v.setOnClickListener(new View.OnClickListener() {
             @Override
