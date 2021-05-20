@@ -35,9 +35,9 @@ public class Payments extends AppCompatActivity implements PaymentResultListener
     long totalPrice;
     CardView address;
     LinearLayout addAddress;
+    HashMap addr;
     TextView name, phone, houseNo, area, city, pin, state;
 
-    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +70,7 @@ public class Payments extends AppCompatActivity implements PaymentResultListener
                 if (documentSnapshot.contains("Address")){
                     address.setVisibility(View.VISIBLE);
                     addAddress.setVisibility(View.GONE);
-                    HashMap addr = (HashMap) documentSnapshot.get("Address");
+                    addr = (HashMap) documentSnapshot.get("Address");
                     name.setText(addr.get("name").toString());
                     houseNo.setText(addr.get("houseNo").toString());
                     area.setText(addr.get("area").toString());
@@ -80,7 +80,7 @@ public class Payments extends AppCompatActivity implements PaymentResultListener
                 else {
                     address.setVisibility(View.GONE);
                     addAddress.setVisibility(View.VISIBLE);
-                    pay.setBackgroundColor(lightGrey);
+                    pay.setBackgroundColor(getResources().getColor(lightGrey));
                     pay.setClickable(false);
                 }
             }
@@ -122,6 +122,12 @@ public class Payments extends AppCompatActivity implements PaymentResultListener
 
     public void addNewAddress(View view) {
         Intent intent = new Intent(this, AddressInput.class);
+        startActivity(intent);
+    }
+
+    public void editAddress(View view) {
+        Intent intent = new Intent(this, AddressInput.class);
+        intent.putExtra("address", addr);
         startActivity(intent);
     }
 }

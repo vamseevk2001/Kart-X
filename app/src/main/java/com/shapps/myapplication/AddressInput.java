@@ -7,12 +7,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.HashMap;
+
 public class AddressInput extends AppCompatActivity {
     TextInputEditText name, phone, houseNo, area, city, pin, state;
+    Button addAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +24,8 @@ public class AddressInput extends AppCompatActivity {
         setContentView(R.layout.activity_address_input);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+        Intent intent = getIntent();
+
         name = findViewById(R.id.name);
         phone = findViewById(R.id.phone);
         houseNo = findViewById(R.id.houseNo);
@@ -27,6 +33,19 @@ public class AddressInput extends AppCompatActivity {
         city = findViewById(R.id.city);
         pin = findViewById(R.id.pinCode);
         state = findViewById(R.id.state);
+        addAddress = findViewById(R.id.addAddressButton);
+
+        if (intent.hasExtra("address")){
+            HashMap address = (HashMap) intent.getSerializableExtra("address");
+            name.setText(address.get("name").toString());
+            phone.setText(address.get("phone").toString());
+            area.setText(address.get("area").toString());
+            city.setText(address.get("city").toString());
+            pin.setText(address.get("pin").toString());
+            state.setText(address.get("state").toString());
+            houseNo.setText(address.get("houseNo").toString());
+            addAddress.setText("Update Address");
+        }
     }
 
     public void addAddress(View view) {

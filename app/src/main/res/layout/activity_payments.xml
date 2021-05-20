@@ -91,6 +91,7 @@
                 android:layout_marginTop="15dp"
                 android:backgroundTint="#d9d5d4"
                 android:text="Edit Address"
+                android:onClick="editAddress"
                 android:id="@+id/editAddress"
                 android:textColor="@color/black"
                 android:textSize="12dp" />
