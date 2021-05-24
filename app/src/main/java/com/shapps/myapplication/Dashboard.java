@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.interfaces.ItemClickListener;
@@ -43,6 +44,7 @@ public class Dashboard extends AppCompatActivity {
     private RecyclerView recyclerView;
     ProductsAdapter adapter;
     DatabaseReference mbase;
+    LottieAnimationView loading;
     CircleImageView avatar;
 
     @Override
@@ -78,11 +80,16 @@ public class Dashboard extends AppCompatActivity {
     public void setRecyclerView(){
         mbase = FirebaseDatabase.getInstance().getReference();
         recyclerView = findViewById(R.id.products);
+        loading = findViewById(R.id.loading);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
-
+        loading.setVisibility(View.VISIBLE);
         FirebaseRecyclerOptions<ItemsDataClass> options = new FirebaseRecyclerOptions.Builder<ItemsDataClass>().setQuery(mbase, ItemsDataClass.class).build();
+        loading.setVisibility(View.GONE);
         adapter = new ProductsAdapter(Dashboard.this, options);
+
         recyclerView.setAdapter(adapter);
+
+
     }
     @Override
     protected void onStart()

@@ -71,7 +71,11 @@ public class cart extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    void setTotal(){
+    long total(){
+        return totalPrice;
+    }
+
+    public void setTotal(){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference userCollection = db.collection("users");
         FirebaseAuth mAuth = FirebaseAuth.getInstance();

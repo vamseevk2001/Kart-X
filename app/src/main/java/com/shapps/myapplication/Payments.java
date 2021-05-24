@@ -27,6 +27,7 @@ import org.json.JSONObject;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
+import com.shapps.myapplication.cart.*;
 
 import static com.shapps.myapplication.R.color.lightGrey;
 
@@ -45,6 +46,8 @@ public class Payments extends AppCompatActivity implements PaymentResultListener
 //        ActionBar actionBar = getSupportActionBar();
 //        actionBar.hide();
 
+        cart ct = new cart();
+
         pay = findViewById(R.id.pay);
         address = findViewById(R.id.address);
         addAddress = findViewById(R.id.addAddress);
@@ -59,7 +62,6 @@ public class Payments extends AppCompatActivity implements PaymentResultListener
         totalPrice = getIntent().getLongExtra("total", 0);
         DecimalFormat formatter = new DecimalFormat("###,###,##0.00");
         pay.setText("PAY ₹ " + formatter.format((double) totalPrice));
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference userCollection = db.collection("users");
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -113,6 +115,11 @@ public class Payments extends AppCompatActivity implements PaymentResultListener
     @Override
     public void onPaymentSuccess(String s) {
         Toast.makeText(this,"success",Toast.LENGTH_SHORT).show();
+        UserDao cart = new UserDao();
+        cart.deleteCart();
+        Intent intent = new Intent(this, OrderPlaced.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
