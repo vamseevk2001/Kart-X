@@ -3,12 +3,9 @@ package com.shapps.myapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -18,14 +15,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
-import java.util.Map;
 
 import static android.content.ContentValues.TAG;
 
@@ -52,6 +45,20 @@ public class UserDao {
 
             }
         });
+    }
+
+    HashMap getAddress() {
+        final HashMap[] data = {new HashMap()};
+        userCollection.document(firebaseuser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                data[0] = (HashMap) documentSnapshot.get("Address");
+            }
+        });
+        if (data[0].isEmpty())
+            return null;
+        else
+            return (HashMap) data[0].get("Address");
     }
 
 

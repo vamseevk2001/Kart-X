@@ -1,8 +1,12 @@
 package com.shapps.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,7 +15,13 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +39,7 @@ public class Item_description extends AppCompatActivity {
     RatingBar product_rating;
     Button addToKart;
     DatabaseReference ref;
+    LottieAnimationView loading;
     String itemKey, name, imgUrl, description;
     long price, stars;
     private FirebaseAuth mAuth;
@@ -45,11 +56,13 @@ public class Item_description extends AppCompatActivity {
         product_price = findViewById(R.id.productPrice);
         product_rating = findViewById(R.id.productRating);
         addToKart = findViewById(R.id.addToKart);
+        //loading = findViewById(R.id.loading);
 
         itemKey = getIntent().getStringExtra("key");
         Log.println(Log.ASSERT, "item", itemKey);
         ref = FirebaseDatabase.getInstance().getReference().child(itemKey);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){

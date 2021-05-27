@@ -40,13 +40,17 @@ public class Payments extends AppCompatActivity implements PaymentResultListener
     TextView name, phone, houseNo, area, city, pin, state;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        setAddress();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payments);
 //        ActionBar actionBar = getSupportActionBar();
 //        actionBar.hide();
-
-        cart ct = new cart();
 
         pay = findViewById(R.id.pay);
         address = findViewById(R.id.address);
@@ -59,14 +63,17 @@ public class Payments extends AppCompatActivity implements PaymentResultListener
         pin = findViewById(R.id.pinCode);
         state = findViewById(R.id.state);
 
+        setAddress();
+
         totalPrice = getIntent().getLongExtra("total", 0);
         DecimalFormat formatter = new DecimalFormat("###,###,##0.00");
         pay.setText("PAY ₹ " + formatter.format((double) totalPrice));
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        CollectionReference userCollection = db.collection("users");
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseUser firebaseuser = mAuth.getCurrentUser();
-        userCollection.document(firebaseuser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+
+    }
+
+    void setAddress(){
+        UserDao user = new UserDao();
+        user.userCollection.document(user.firebaseuser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if (documentSnapshot.contains("Address")){
@@ -125,6 +132,9 @@ public class Payments extends AppCompatActivity implements PaymentResultListener
     @Override
     public void onPaymentError(int i, String s) {
         Toast.makeText(this,"Failure",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, cart.class);
+        startActivity(intent);
+        finish();
     }
 
     public void addNewAddress(View view) {

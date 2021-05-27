@@ -63,8 +63,6 @@ public class AddressInput extends AppCompatActivity {
                     city.getText().toString(), state.getText().toString());
             UserDao userDao = new UserDao();
             userDao.addAddress(address);
-            Intent intent = new Intent(this, cart.class);
-            startActivity(intent);
             finish();
         }
         else {

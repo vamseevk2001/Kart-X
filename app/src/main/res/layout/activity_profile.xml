@@ -18,8 +18,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/black" />
 
-
-
     <ImageView
         android:id="@+id/bar"
         android:layout_width="50dp"
@@ -125,9 +123,9 @@
 
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/phoneLabel"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="12"
                     android:fontFamily="sans-serif"
                     android:text="Phone No. : "
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
@@ -136,158 +134,56 @@
 
                 <TextView
                     android:id="@+id/phoneNo"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
+                    android:text="ajkad;f"
+                    android:layout_marginStart="5dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="15"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                     android:textColor="@color/black"
                     android:visibility="visible" />
 
 
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="5"
-                    android:onClick="editPhone"
-                    android:src="@drawable/ic_baseline_edit_24"
-                    app:tint="@color/black" />
-
             </LinearLayout>
 
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/phoneNoInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter your phone no."
-                android:inputType="phone"
-                android:visibility="gone" />
-
-
-
-
-            <Button
-                android:id="@+id/donePhone"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:onClick="setPhone"
-                android:text="done"
-                android:visibility="gone" />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="30"
-                    android:fontFamily="sans-serif"
-                    android:text="Address 1 : "
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:textFontWeight="1000"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="5"
-                    android:onClick="editAddresss1"
-                    android:src="@drawable/ic_baseline_edit_24"
-                    app:tint="@color/black" />
-
-            </LinearLayout>
-
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/address1_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter your home address"
-                android:inputType="textMultiLine"
-                android:visibility="gone" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/address1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="40dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                android:textColor="@color/black"
-                android:visibility="gone" />
-
-            <Button
-                android:id="@+id/doneAddress1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:onClick="setAddress1"
-                android:text="done"
-                android:visibility="gone" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="30"
-                    android:fontFamily="sans-serif"
-                    android:text="Address 2 : "
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:textFontWeight="1000"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="5"
-                    android:onClick="editAddresss2"
-                    android:src="@drawable/ic_baseline_edit_24"
-                    app:tint="@color/black" />
-
-            </LinearLayout>
-
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/address2_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter your office address "
-                android:inputType="textMultiLine"
-                android:visibility="gone" />
+                android:fontFamily="sans-serif"
+                android:text="Address : "
+                android:id="@+id/addressLabel"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textFontWeight="1000"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/address2"
+                android:id="@+id/addressProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="5dp"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                android:textColor="@color/black"
-                android:visibility="gone" />
-
-            <Button
-                android:id="@+id/doneAddress2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:onClick="setAddress2"
-                android:text="done"
-                android:visibility="gone" />
+                android:textColor="@color/black" />
 
         </LinearLayout>
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="edit details"
+                android:id="@+id/editAddress"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+
+
 
     </ScrollView>
 

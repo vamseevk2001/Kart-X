@@ -4,13 +4,11 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
@@ -20,17 +18,14 @@ import com.denzcoskun.imageslider.models.SlideModel;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.material.imageview.ShapeableImageView;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import static com.shapps.myapplication.ProductsAdapter.*;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -74,7 +69,6 @@ public class Dashboard extends AppCompatActivity {
         avatar = findViewById(R.id.avatar);
         Glide.with(this).load(signInAccount.getPhotoUrl()).circleCrop().into(avatar);
         setRecyclerView();
-
     }
 
     public void setRecyclerView(){
@@ -82,14 +76,9 @@ public class Dashboard extends AppCompatActivity {
         recyclerView = findViewById(R.id.products);
         loading = findViewById(R.id.loading);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
-        loading.setVisibility(View.VISIBLE);
         FirebaseRecyclerOptions<ItemsDataClass> options = new FirebaseRecyclerOptions.Builder<ItemsDataClass>().setQuery(mbase, ItemsDataClass.class).build();
-        loading.setVisibility(View.GONE);
         adapter = new ProductsAdapter(Dashboard.this, options);
-
-        recyclerView.setAdapter(adapter);
-
-
+       recyclerView.setAdapter(adapter);
     }
     @Override
     protected void onStart()
@@ -104,6 +93,8 @@ public class Dashboard extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
+
+
 
 
     public void loadProfile(View view) {
