@@ -1,6 +1,5 @@
 package com.shapps.myapplication;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.Auth;
@@ -44,7 +44,6 @@ public class Profile extends AppCompatActivity {
     CircleImageView avatar;
     HashMap addr;
     private FirebaseAuth mAuth;
-    GoogleApiClient mGoogleApiClient;
     GoogleSignInClient mGoogleSignInClient;
 
     @Override
@@ -76,7 +75,6 @@ public class Profile extends AppCompatActivity {
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
         if (signInAccount != null) {
@@ -120,6 +118,11 @@ public class Profile extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if (documentSnapshot.contains("Address")) {
                     addr = (HashMap) documentSnapshot.get("Address");
+                    address.setVisibility(View.VISIBLE);
+                    phone.setVisibility(View.VISIBLE);
+                    phoneLable.setVisibility(View.VISIBLE);
+                    addressLable.setVisibility(View.VISIBLE);
+                    editAddress.setText("Edit Details");
                     address.setText(MessageFormat.format("{0}\n{1}\n{2}\n{3}\n{4}", addr.get("houseNo").toString().trim(),
                             addr.get("area").toString().trim(), addr.get("city").toString().trim(),
                             addr.get("state").toString().trim(), addr.get("pin").toString().trim()));

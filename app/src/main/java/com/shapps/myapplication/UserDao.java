@@ -47,21 +47,6 @@ public class UserDao {
         });
     }
 
-    HashMap getAddress() {
-        final HashMap[] data = {new HashMap()};
-        userCollection.document(firebaseuser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                data[0] = (HashMap) documentSnapshot.get("Address");
-            }
-        });
-        if (data[0].isEmpty())
-            return null;
-        else
-            return (HashMap) data[0].get("Address");
-    }
-
-
     void addAddress(Address address){
         HashMap<String, Object> addr = new HashMap<>();
         addr.put("Address", address);

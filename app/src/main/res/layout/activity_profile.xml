@@ -128,6 +128,7 @@
                     android:layout_height="match_parent"
                     android:fontFamily="sans-serif"
                     android:text="Phone No. : "
+                    android:visibility="gone"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                     android:textFontWeight="1000"
                     android:textStyle="bold" />
@@ -135,12 +136,11 @@
                 <TextView
                     android:id="@+id/phoneNo"
                     android:layout_width="wrap_content"
-                    android:text="ajkad;f"
                     android:layout_marginStart="5dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                     android:textColor="@color/black"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
 
 
             </LinearLayout>
@@ -158,6 +158,7 @@
                 android:fontFamily="sans-serif"
                 android:text="Address : "
                 android:id="@+id/addressLabel"
+                android:visibility="gone"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 android:textFontWeight="1000"
                 android:textStyle="bold" />
@@ -167,23 +168,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
+                android:visibility="gone"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 android:textColor="@color/black" />
 
         </LinearLayout>
 
-
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="edit details"
-                android:id="@+id/editAddress"
-                android:layout_marginTop="10dp"
+                android:text="Edit Details"
+                android:textAllCaps="false"
                 android:layout_gravity="center"
-                />
+                android:padding="8dp"
+                app:iconGravity="end"
+                android:id="@+id/editAddress"
+                app:icon="@drawable/ic_baseline_edit_24"
+                android:layout_marginTop="20dp" />
+
         </LinearLayout>
-
-
 
     </ScrollView>
 
