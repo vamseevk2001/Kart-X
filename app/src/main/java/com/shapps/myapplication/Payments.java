@@ -49,8 +49,6 @@ public class Payments extends AppCompatActivity implements PaymentResultListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payments);
-//        ActionBar actionBar = getSupportActionBar();
-//        actionBar.hide();
 
         pay = findViewById(R.id.pay);
         address = findViewById(R.id.address);
@@ -83,6 +81,7 @@ public class Payments extends AppCompatActivity implements PaymentResultListener
                     name.setText(addr.get("name").toString());
                     houseNo.setText(addr.get("houseNo").toString());
                     area.setText(addr.get("area").toString());
+                    pay.setClickable(true);
                     city.setText(addr.get("city").toString() + ", " + addr.get("state").toString() + ", " +addr.get("pin").toString());
                     phone.setText("+91 " + addr.get("phone").toString());
                 }
