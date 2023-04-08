@@ -13,6 +13,7 @@ import android.view.View;
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.interfaces.ItemClickListener;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -52,13 +53,18 @@ public class Dashboard extends AppCompatActivity {
 
         ImageSlider imageSlider = (ImageSlider) findViewById(R.id.image_slider);
         List<SlideModel> imageList = new ArrayList<SlideModel>();
-        imageList.add(new SlideModel(img_url1));
-        imageList.add(new SlideModel(img_url2));
-        imageList.add(new SlideModel(img_url3));
-        imageList.add(new SlideModel(img_url4));
-        imageList.add(new SlideModel(img_url5));
-        imageSlider.setImageList(imageList, false);
+        imageList.add(new SlideModel(img_url1, ScaleTypes.FIT));
+        imageList.add(new SlideModel(img_url2, ScaleTypes.FIT));
+        imageList.add(new SlideModel(img_url3, ScaleTypes.FIT));
+        imageList.add(new SlideModel(img_url4, ScaleTypes.FIT));
+        imageList.add(new SlideModel(img_url5, ScaleTypes.FIT));
+        imageSlider.setImageList(imageList);
         imageSlider.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void doubleClick(int i) {
+
+            }
+
             @Override
             public void onItemSelected(int i) {
 

@@ -7,13 +7,13 @@
             android:id="@+id/image_slider"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            app:corner_radius="5"
+            app:iss_corner_radius="5"
             app:layout_constraintTop_toBottomOf="@id/app_logo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:auto_cycle="true"
-            app:period="1000"
-            app:delay="0"/>
+            app:iss_auto_cycle="true"
+            app:iss_period="1000"
+            app:iss_delay="0"/>
         <Constraint
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/products"
@@ -29,14 +29,14 @@
             android:id="@+id/image_slider"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            app:corner_radius="5"
+            app:iss_corner_radius="5"
             app:layout_constraintBottom_toBottomOf="@id/app_logo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="parent"
             android:visibility="invisible"
-            app:auto_cycle="true"
-            app:period="1000"
-            app:delay="0"
+            app:iss_auto_cycle="true"
+            app:iss_period="1000"
+            app:iss_delay="0"
             />
     </ConstraintSet>
 
